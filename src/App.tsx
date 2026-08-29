@@ -10,6 +10,7 @@ import { StandupManager } from './components/StandupManager';
 import { BlogManager } from './components/BlogManager';
 import { CommandTerminal } from './components/CommandTerminal';
 import { DebugPanel } from './components/DebugPanel';
+import { SelfDemo } from './components/SelfDemo';
 
 function MainLayout() {
   const [currentTab, setCurrentTab] = useState('dashboard');
@@ -26,6 +27,7 @@ function MainLayout() {
           {currentTab === 'blog' && <BlogManager />}
           {currentTab === 'settings' && <SettingsView />}
           {currentTab === 'queue' && <QueueManager />}
+          {currentTab === 'demo' && <SelfDemo />}
         </main>
       </div>
       <CommandTerminal currentTab={currentTab} setCurrentTab={setCurrentTab} />
