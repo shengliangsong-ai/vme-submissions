@@ -11,6 +11,7 @@ import { BlogManager } from './components/BlogManager';
 import { CommandTerminal } from './components/CommandTerminal';
 import { DebugPanel } from './components/DebugPanel';
 import { SelfDemo } from './components/SelfDemo';
+import { VirtualTeams } from './components/VirtualTeams';
 
 function MainLayout() {
   const [currentTab, setCurrentTab] = useState('dashboard');
@@ -26,6 +27,7 @@ function MainLayout() {
           {currentTab === 'standups' && <StandupManager />}
           {currentTab === 'blog' && <BlogManager />}
           {currentTab === 'settings' && <SettingsView />}
+          {currentTab === 'teams' && <VirtualTeams />}
           {currentTab === 'queue' && <QueueManager />}
           {currentTab === 'demo' && <SelfDemo />}
         </main>

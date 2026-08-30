@@ -178,10 +178,11 @@ export function QueueManager() {
                         {job.status === 'awaiting_approval' && (
                           <button
                             onClick={(e) => { e.stopPropagation(); approveJob(job.id); }}
-                            className="p-1 text-emerald-500 hover:text-emerald-600 font-bold ml-2"
-                            title="Approve Plan"
+                            className="flex items-center gap-1 px-3 py-1 bg-emerald-100 text-emerald-700 hover:bg-emerald-200 hover:text-emerald-800 rounded font-bold ml-2 text-[10px] uppercase tracking-wider transition-colors shadow-sm"
+                            title="Human in the loop safety mechanism"
                           >
-                            Approve
+                            <CheckCircle2 size={14} />
+                            Approve & Sign
                           </button>
                         )}
                         {(job.status !== 'queued' && job.status !== 'running' && job.status !== 'awaiting_approval') && (
