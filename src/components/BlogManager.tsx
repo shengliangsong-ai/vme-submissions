@@ -151,7 +151,7 @@ export function BlogManager() {
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-2xl font-semibold text-[#1a1a1a]">Blog & Lessons Learned</h2>
-          <p className="text-[#666666] mt-1">Document insights from Claude sessions.</p>
+          <p className="text-[#666666] mt-1">Document insights from AI sessions.</p>
         </div>
         {!isCreating && !editingId && (
           <button
