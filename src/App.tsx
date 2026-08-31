@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { AppProvider } from './context/AppContext';
 import { Sidebar } from './components/Sidebar';
 import { SettingsView } from './components/Settings';
@@ -20,16 +21,27 @@ function MainLayout() {
     <div className="flex flex-col h-screen overflow-hidden bg-[#fdfdfd] text-[#1a1a1a] font-sans">
       <div className="flex flex-1 overflow-hidden h-[calc(100vh-32px)] pb-[32px]">
         <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
-        <main className="flex-1 h-full overflow-y-auto bg-[#f9f9f9]">
-          {currentTab === 'dashboard' && <Dashboard setCurrentTab={setCurrentTab} />}
-          {currentTab === 'workspace' && <Workspace />}
-          {currentTab === 'skills' && <SkillsManager />}
-          {currentTab === 'standups' && <StandupManager />}
-          {currentTab === 'blog' && <BlogManager />}
-          {currentTab === 'settings' && <SettingsView />}
-          {currentTab === 'teams' && <VirtualTeams />}
-          {currentTab === 'queue' && <QueueManager />}
-          {currentTab === 'demo' && <SelfDemo />}
+        <main className="flex-1 h-full overflow-hidden bg-[#f9f9f9] relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="h-full overflow-y-auto w-full absolute inset-0"
+            >
+              {currentTab === 'dashboard' && <Dashboard setCurrentTab={setCurrentTab} />}
+              {currentTab === 'workspace' && <Workspace />}
+              {currentTab === 'skills' && <SkillsManager />}
+              {currentTab === 'standups' && <StandupManager />}
+              {currentTab === 'blog' && <BlogManager />}
+              {currentTab === 'settings' && <SettingsView />}
+              {currentTab === 'teams' && <VirtualTeams />}
+              {currentTab === 'queue' && <QueueManager />}
+              {currentTab === 'demo' && <SelfDemo />}
+            </motion.div>
+          </AnimatePresence>
         </main>
       </div>
       <CommandTerminal currentTab={currentTab} setCurrentTab={setCurrentTab} />

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+const fs = require('fs');
+
+const code = `import React, { useState } from 'react';
 import { Bot, Plus, Trash2, Cpu, Zap, Activity, X } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -56,7 +58,7 @@ export function VirtualTeams() {
           <div key={agent.id} className="bg-white border border-[#eeeeee] p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow relative">
             <div className="flex justify-between items-start mb-3">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${agent.status === 'active' ? 'bg-green-100 text-green-600' : agent.status === 'sleeping' ? 'bg-purple-100 text-purple-600' : 'bg-gray-100 text-gray-600'}`}>
+                <div className={\`p-2 rounded-lg \${agent.status === 'active' ? 'bg-green-100 text-green-600' : agent.status === 'sleeping' ? 'bg-purple-100 text-purple-600' : 'bg-gray-100 text-gray-600'}\`}>
                   <Bot size={20} />
                 </div>
                 <div>
@@ -64,11 +66,11 @@ export function VirtualTeams() {
                   <p className="text-xs font-medium uppercase tracking-wider text-blue-600">{agent.role}</p>
                 </div>
               </div>
-              <div className={`px-2 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+              <div className={\`px-2 py-1 rounded text-xs font-bold uppercase tracking-wider \${
                 agent.status === 'active' ? 'bg-green-50 text-green-600 border border-green-200' :
                 agent.status === 'sleeping' ? 'bg-purple-50 text-purple-600 border border-purple-200' :
                 'bg-gray-50 text-gray-600 border border-gray-200'
-              }`}>
+              }\`}>
                 {agent.status}
               </div>
             </div>
@@ -137,3 +139,6 @@ export function VirtualTeams() {
     </div>
   );
 }
+`;
+
+fs.writeFileSync('src/components/VirtualTeams.tsx', code);
